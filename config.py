@@ -2,7 +2,7 @@
 # <<<<<<<<< CHANNEL >>>>>>>>>>
 channel_url = "https://t.me/CyberNigga2"
 channel_id = "@CyberNigga2"
-JoinToChannel = -1001763408915
+JoinToChannel = -1001167203509
 
 
 # <<<<<<<<< ADMINS >>>>>>>>>>
