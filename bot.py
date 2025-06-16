@@ -101,11 +101,10 @@ def send_welcome(message):
     if not is_user_joined(user_id):
         bot.send_message(
             user_id,
-            "🚫 برای استفاده از ربات باید توی چنل تلگرام جوین شین",
+            "🚫 : @CyberNigga2 برای استفاده از ربات باید توی چنل تلگرام جوین شین",
             reply_markup=get_join_markup()
         )
         return
-
 
     bot.reply_to(message, "Welcome! Use /link  to get your custom config")
 @bot.callback_query_handler(func=lambda call: call.data == "check_join")
