@@ -50,7 +50,7 @@ def GET_users_id():
     
 def link_status(user_id):
     try:
-        user_status = session.query(User.link_status).all()
+        user_status = session.query(User.link_status).filter_by(userid=user_id).first()
         return user_status
     except SQLAlchemyError as e:
         return f"Error: {e}"

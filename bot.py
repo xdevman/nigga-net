@@ -20,7 +20,7 @@ TOKEN = os.getenv("TOKEN")
 
 # Apply proxy if enabled
 # if PROXY_ENABLED and PROXY:
-telebot.apihelper.proxy = {'https': 'socks5h://127.0.0.1:2080'}
+# telebot.apihelper.proxy = {'https': 'socks5h://127.0.0.1:2080'}
 
 # Initialize bot
 bot = telebot.TeleBot(TOKEN)
@@ -138,7 +138,7 @@ def send_welcome(message):
         )
         return
     is_link_generated = link_status(user_id)
-    if is_link_generated[0][0] == True:
+    if is_link_generated[0] == True:
         res = client_xui.get_user(str(user_id))
         bot.reply_to(message, f"```{res}```", parse_mode='MarkdownV2')
     else:
