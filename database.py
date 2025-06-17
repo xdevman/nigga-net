@@ -21,7 +21,7 @@ class User(Base):
     __tablename__ = 'users'
     userid = Column(BigInteger, primary_key=True, unique=True, nullable=False)
     joined = Column(BigInteger, nullable=False)
-    uuid = Column(String, default=None)
+    link_status = Column(Boolean, default=False)
 
 Base.metadata.create_all(engine)
 
@@ -47,6 +47,23 @@ def GET_users_id():
         return [uid[0] for uid in user_ids]  # each row is a tuple like (userid,)
     except SQLAlchemyError as e:
         return f"Error: {e}"
+    
+def link_status(user_id):
+    try:
+        user_status = session.query(User.link_status).all()
+        return user_status
+    except SQLAlchemyError as e:
+        return f"Error: {e}"
 
-
-
+def update_linkStatus(user_id):
+    try:
+        user = session.query(User).filter_by(userid=user_id).first()
+        if user:
+            user.link_status = True
+            session.commit()
+            return "User updated successfully"
+        else:
+            return "User not found"
+    except SQLAlchemyError as e:
+        session.rollback()
+        return f"Error: {e}"
